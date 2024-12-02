@@ -1,0 +1,19 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+    <title><%= action %> Recipe</title>
+</head>
+<body>
+    <h1><%= action %> Recipe</h1>
+    <form action="<%= action === 'Add' ? '/' : `/${item.id}` %>" method="POST">
+        <% if (action === 'Edit') { %>
+            <input type="hidden" name="_method" value="PUT">
+        <% } %>
+        <input type="text" name="name" value="<%= item ? item.name : '' %>" placeholder="Name" required>
+        <textarea name="description" placeholder="Description"><%= item ? item.description : '' %></textarea>
+        <button type="submit"><%= action %> Recipe</button>
+    </form>
+</body>
+</html>
+
